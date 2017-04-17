@@ -1,9 +1,5 @@
 class Pingpong
   def inputValid?(number)
-    if number > 0
-      true
-    else
-      false
-    end
+    !!number.to_s.match(/\A\d+(\0.0+)?\z/)
   end
 end
