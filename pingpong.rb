@@ -36,4 +36,12 @@ class Pingpong
     end
   end
 
+  def doPingPongThing(number)
+    if inputValid?(number)
+      transformPingPong(number)
+    else
+      "It's not a valid number yo."
+    end
+  end
+
 end

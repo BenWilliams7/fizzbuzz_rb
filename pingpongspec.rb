@@ -28,25 +28,22 @@ describe "Pingpong#inputValid?" do
   end
 end
 
-describe "Pingpong#countUpTo" do
-  xit "lists positive integers up to the input" do
-    pingpong = Pingpong.new
-    expect(pingpong.countUpTo(4)).to(eq([1,2,3,4]))
-  end
-  xit "returns empty array if given negative number" do
-    pingpong = Pingpong.new
-    expect(pingpong.countUpTo(-4)).to(eq([]))
-  end
-end
-
-describe "Pingpong#countBy3" do
-  xit "replaces every 3rd number with ping" do
-    pingpong = Pingpong.new
-    expect(pingpong.countBy3(6)).to(eq([1,2,"ping",4,5,"ping"]))
-  end
-end
+# describe "Pingpong#countUpTo" do
+#   xit "lists positive integers up to the input" do
+#     pingpong = Pingpong.new
+#     expect(pingpong.countUpTo(4)).to(eq([1,2,3,4]))
+#   end
+#   xit "returns empty array if given negative number" do
+#     pingpong = Pingpong.new
+#     expect(pingpong.countUpTo(-4)).to(eq([]))
+#   end
+# end
 
 describe "Pingpong#transformIntoPingPong" do
+  it "replaces every 3rd number with ping" do
+    pingpong = Pingpong.new
+    expect(pingpong.transformPingPong(4)).to(eq([1,2,"ping",4]))
+  end
   it "replaces every 3rd number with ping and every 5th number with pong" do
     pingpong = Pingpong.new
     expect(pingpong.transformPingPong(12)).to(eq([1,2,"ping",4,"pong","ping", 7, 8, "ping", "pong", 11, "ping"]))
@@ -54,5 +51,16 @@ describe "Pingpong#transformIntoPingPong" do
   it "replaces every 15th number with pingpong" do
     pingpong = Pingpong.new
     expect(pingpong.transformPingPong(15)).to(eq([1,2,"ping",4,"pong","ping", 7, 8, "ping", "pong", 11, "ping", 13, 14, "pingpong"]))
+  end
+end
+
+describe "Pingpong#doPingPongThing" do
+  it "returns error string if given invalid input" do
+    pingpong = Pingpong.new
+    expect(pingpong.doPingPongThing(-4)).to(eq("It's not a valid number yo."))
+  end
+  it "returns array of pings pongs and pingpongs correctly transformed" do
+    pingpong = Pingpong.new
+    expect(pingpong.doPingPongThing(16)).to(eq([1,2,"ping",4,"pong","ping", 7, 8, "ping", "pong", 11, "ping", 13, 14, "pingpong",16]))
   end
 end
